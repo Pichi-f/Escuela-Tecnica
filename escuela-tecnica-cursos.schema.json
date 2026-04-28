@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://escuela-tecnica.local/schemas/cursos.json",
+  "title": "Escuela Técnica Courses Feed",
+  "type": "object",
+  "required": ["courses"],
+  "properties": {
+    "updatedAt": {
+      "type": "string",
+      "description": "ISO 8601 timestamp for the last successful sync"
+    },
+    "courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "name", "teacher", "startTime", "endTime", "days", "startDate", "creditsUsac", "creditsClar"],
+        "properties": {
+          "no": { "type": ["integer", "string"] },
+          "code": { "type": "string" },
+          "name": { "type": "string" },
+          "teacher": { "type": "string" },
+          "startTime": { "type": "string" },
+          "endTime": { "type": "string" },
+          "days": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "startDate": { "type": "string" },
+          "creditsUsac": { "type": ["string", "number"] },
+          "creditsClar": { "type": ["string", "number"] },
+          "classLink": { "type": "string" },
+          "imageClass": { "type": "string" },
+          "icon": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

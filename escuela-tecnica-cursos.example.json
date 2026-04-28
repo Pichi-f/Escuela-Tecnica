@@ -1,0 +1,80 @@
+{
+  "updatedAt": "2026-04-28T00:00:00Z",
+  "courses": [
+    {
+      "no": 1,
+      "code": "197",
+      "name": "Propiedad Intelectual",
+      "teacher": "Licda. Ligia Eunice Vásquez Dardón",
+      "startTime": "12:00",
+      "endTime": "14:00",
+      "days": ["Ma", "Mi"],
+      "startDate": "lunes 19 de enero",
+      "creditsUsac": 2,
+      "creditsClar": 2,
+      "classLink": "",
+      "imageClass": "img-construccion",
+      "icon": "<path d=\"M2 20h20M6 20V10m12 10V10M2 10l10-7 10 7\"/>"
+    },
+    {
+      "no": 2,
+      "code": "184",
+      "name": "Acondicionamiento del Agua para la Industria",
+      "teacher": "Otto Iván Augusto Orozco y Orozco",
+      "startTime": "08:00",
+      "endTime": "13:00",
+      "days": ["Sa"],
+      "startDate": "sábado 24 de enero",
+      "creditsUsac": 5,
+      "creditsClar": 2,
+      "classLink": "",
+      "imageClass": "img-industria",
+      "icon": "<polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/>"
+    },
+    {
+      "no": 3,
+      "code": "185",
+      "name": "Buenas Prácticas de Manufactura en la Industria Farmacéutica y Alimenticia",
+      "teacher": "Ana Paola Méndez de León",
+      "startTime": "14:00",
+      "endTime": "19:00",
+      "days": ["Sa"],
+      "startDate": "sábado 24 de enero",
+      "creditsUsac": 2,
+      "creditsClar": 2,
+      "classLink": "",
+      "imageClass": "img-transporte",
+      "icon": "<path d=\"M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9h-2\"/><circle cx=\"6.5\" cy=\"17.5\" r=\"2.5\"/><circle cx=\"17.5\" cy=\"17.5\" r=\"2.5\"/><polyline points=\"13 15 13 5\"/>"
+    },
+    {
+      "no": 4,
+      "code": "186",
+      "name": "Administración de la Calidad en la Industria Alimenticia",
+      "teacher": "Ana Paola Méndez de León",
+      "startTime": "18:30",
+      "endTime": "21:00",
+      "days": ["Ma", "Ju"],
+      "startDate": "martes 20 de enero",
+      "creditsUsac": 5,
+      "creditsClar": 2,
+      "classLink": "",
+      "imageClass": "img-seguridad",
+      "icon": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>"
+    },
+    {
+      "no": 5,
+      "code": "187",
+      "name": "Gestión Gerencial de Operaciones",
+      "teacher": "Andrés Manuel Remis Salguero",
+      "startTime": "18:00",
+      "endTime": "20:30",
+      "days": ["Ma", "Ju"],
+      "startDate": "martes 20 de enero",
+      "creditsUsac": 2,
+      "creditsClar": 2,
+      "classLink": "",
+      "imageClass": "img-tecnologia",
+      "icon": "<rect x=\"2\" y=\"2\" width=\"20\" height=\"8\" rx=\"2\"/><rect x=\"2\" y=\"14\" width=\"20\" height=\"8\" rx=\"2\"/><line x1=\"6\" y1=\"6\" x2=\"6.01\" y2=\"6\"/><line x1=\"6\" y1=\"18\" x2=\"6.01\" y2=\"18\"/>"
+    }
+  ]
+}

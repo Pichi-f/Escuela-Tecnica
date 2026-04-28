@@ -187,6 +187,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .search-input {
@@ -197,7 +198,8 @@
       border: 1px solid var(--gray-border);
       border-radius: 8px;
       padding: 9px 16px;
-      width: 320px;
+      width: min(100%, 320px);
+      flex: 1 1 320px;
       color: var(--gray-text);
       font-size: 14px;
       font-family: var(--font);
@@ -428,6 +430,207 @@
     }
 
     .btn-detail:hover { background: #334a62; }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .course-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 17, 23, 0.68);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+    }
+
+    .course-modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .course-modal {
+      width: min(980px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      padding: 28px;
+    }
+
+    .course-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: #eff2f6;
+      color: var(--dark);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .course-modal-head {
+      padding-right: 56px;
+      margin-bottom: 20px;
+    }
+
+    .course-modal-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #eaf2ff;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .course-modal h2 {
+      font-size: 30px;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .course-modal-subtitle {
+      color: var(--gray-text);
+      font-size: 15px;
+    }
+
+    .course-modal-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 360px) 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .course-modal-card {
+      height: 280px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-modal-card .img-placeholder {
+      position: relative;
+      z-index: 1;
+    }
+
+    .course-modal-note {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--gray-text);
+    }
+
+    .course-modal-link {
+      color: var(--blue);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .course-modal-details {
+      display: grid;
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--gray-border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .course-detail-item {
+      display: grid;
+      gap: 4px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(224, 227, 232, 0.7);
+    }
+
+    .course-detail-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .course-detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--gray-text);
+    }
+
+    .course-detail-value {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .course-detail-value a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    @media (max-width: 860px) {
+      .search-input {
+        width: 100%;
+        flex-basis: 100%;
+      }
+
+      .btn-filters {
+        flex: 1 1 auto;
+      }
+
+      .btn-grid {
+        margin-left: 0;
+      }
+
+      .course-modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-modal {
+        padding: 22px;
+      }
+
+      .course-modal h2 {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .filter-bar,
+      .courses-section,
+      .cta-banner,
+      footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .cta-banner {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 28px 20px;
+      }
+
+      .search-input {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
 
     /* ── PRÓXIMAS APERTURAS CARD ── */
     .card-upcoming {
@@ -692,7 +895,7 @@
   <div class="filter-top">
     <div class="search-input">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Buscar por nombre, palabra clave o área...
+      Buscar por nombre, palabra clave o código...
     </div>
     <button class="btn-filters">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
@@ -710,12 +913,6 @@
       <button class="chip">Virtual</button>
       <button class="chip">Híbrida</button>
     </div>
-    <div class="filter-group">
-      <span class="filter-label">Área de Estudio</span>
-      <button class="chip">Construcción</button>
-      <button class="chip">Industria</button>
-      <button class="chip">Tecnología</button>
-    </div>
   </div>
 </div>
 
@@ -729,190 +926,12 @@
     </a>
   </div>
 
-  <div class="courses-grid">
-
-    <!-- Card 1: Maestro de Obra -->
-    <div class="card">
-      <div class="card-img img-construccion">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M2 20h20M6 20V10m12 10V10M2 10l10-7 10 7"/></svg>
-        </div>
-        <span class="card-badge">Construcción</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Maestro de Obra</div>
-        <div class="card-desc">Capacitación avanzada en supervisión de construcción, lectura de planos y gestión de proyectos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            10 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Presencial
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            40 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 2: Electricista Industrial -->
-    <div class="card">
-      <div class="card-img img-industria">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <span class="card-badge">Industria</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Electricista Industrial</div>
-        <div class="card-desc">Especialización en sistemas eléctricos de potencia, automatización industrial y mantenimiento de equipos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            12 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Híbrida
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            45 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 3: Mecánica Automotriz -->
-    <div class="card">
-      <div class="card-img img-transporte">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9h-2"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><polyline points="13 15 13 5"/></svg>
-        </div>
-        <span class="card-badge">Transporte</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Mecánica Automotriz</div>
-        <div class="card-desc">Diagnóstico y reparación de sistemas de inyección, motores diésel y gasolina, y nuevas tecnologías en vehículos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            18 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Presencial
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            60 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 4: Seguridad Industrial -->
-    <div class="card">
-      <div class="card-img img-seguridad">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <span class="card-badge">Salud &amp; Seguridad</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Seguridad Industrial</div>
-        <div class="card-desc">Gestión de riesgos laborales, protocolos de prevención de accidentes y normativas de salud ocupacional.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            6 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Virtual
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            25 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 5: Técnico en Redes -->
-    <div class="card">
-      <div class="card-img img-tecnologia">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
-        <span class="card-badge">Tecnología</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Técnico en Redes</div>
-        <div class="card-desc">Configuración de infraestructuras críticas, seguridad informática, administración de servidores y sistemas en la nube.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            8 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Virtual
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            30 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Próximas Aperturas -->
-    <div class="card-upcoming">
-      <div class="upcoming-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      </div>
-      <div class="upcoming-title">Próximas Aperturas</div>
-      <div class="upcoming-desc">Estamos constantemente actualizando nuestra oferta académica con nuevos diplomados y certificaciones técnicas.</div>
-      <button class="btn-subscribe">Suscribirse a novedades</button>
-    </div>
-
-  </div>
+  <div class="courses-grid"></div>
 </section>
+
+<script src="escuela-tecnica-cursos.config.js"></script>
+<script src="escuela-tecnica-cursos-data.js"></script>
+<script src="escuela-tecnica-cursos-app.js"></script>
 
 <!-- CTA BANNER -->
 <div class="cta-banner">

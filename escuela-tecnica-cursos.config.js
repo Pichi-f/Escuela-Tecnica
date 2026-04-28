@@ -1,0 +1,1 @@
+window.COURSE_SOURCE_URL = window.COURSE_SOURCE_URL || '';
