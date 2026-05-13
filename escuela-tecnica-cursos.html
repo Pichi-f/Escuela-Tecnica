@@ -3,183 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cursos – Escuela Técnica FIUSAC</title>
+  <title>Cursos - Escuela Tecnica FIUSAC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --navy-900: #0a1e33;
+      --navy-800: #0f2a44;
+      --navy-700: #1a3a5c;
+      --navy-600: #24496f;
+      --yellow: #f5b400;
+      --yellow-bright: #ffd23f;
+      --yellow-dark: #c28c00;
+      --ink: #1a1a1a;
+      --cream: #f7f5f2;
+      --gray-100: #eeeae4;
+      --gray-200: #d9d4cc;
+      --gray-400: #8a8580;
+      --gray-600: #4a4a4a;
+      --white: #ffffff;
+      --footer-bg: #353637;
+      --radius: 4px;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --blue: #1565C0;
-      --blue-light: #1976D2;
-      --blue-accent: #2196F3;
-      --dark: #334a62;
-      --dark-nav: #0d1117;
-      --gray-bg: #f5f6f8;
-      --gray-border: #e0e3e8;
-      --gray-text: #6b7280;
-      --text: #334a62;
-      --white: #fff;
-      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      --radius: 10px;
-      --font: 'Barlow', sans-serif;
+    html, body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
 
-    body {
-      font-family: var(--font);
-      color: var(--text);
-      background: var(--white);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    /* ── NAVBAR ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 64px;
-      border-bottom: 1px solid var(--gray-border);
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .nav-logos {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .logo-circle {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 2px solid #c8a84b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8px;
-      font-weight: 800;
-      color: #c8a84b;
-      letter-spacing: 0.5px;
-      background: #fff;
-      overflow: hidden;
-    }
-
-    .logo-fiusac {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--dark);
-      color: #fff;
-      width: 42px;
-      height: 42px;
-      border-radius: 4px;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      line-height: 1.2;
-    }
-
-    .logo-fiusac span {
-      font-size: 6px;
-      font-weight: 500;
-      opacity: 0.8;
-      text-align: center;
-      line-height: 1.1;
-    }
-
-    .brand-name {
-      font-size: 18px;
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--dark);
+      letter-spacing: 0.01em;
+      line-height: 1.05;
       text-transform: uppercase;
     }
 
-    .nav-links {
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .social-strip {
+      background: var(--navy-800);
+      height: 34px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 14px;
+      padding: 0 32px;
+      color: var(--white);
+    }
+
+    .social-strip a {
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .social-strip a svg,
+    .footer-socials a svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .social-strip a:hover { opacity: 1; color: var(--yellow); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+    }
+
+    .header-inner {
       display: flex;
       align-items: center;
-      gap: 32px;
-      list-style: none;
+      justify-content: space-between;
+      height: 72px;
     }
 
-    .nav-links a {
+    .logo-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-lockup img {
+      height: 68px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-main {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-main a {
+      padding: 10px 16px;
       font-size: 14px;
       font-weight: 500;
-      color: var(--gray-text);
-      transition: color .2s;
+      color: var(--navy-800);
+      border-radius: 2px;
     }
 
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); font-weight: 600; }
+    .nav-main a:hover { color: var(--yellow-dark); }
+    .nav-main a.active { color: var(--yellow-dark); font-weight: 600; }
 
-    /* ── BREADCRUMB ── */
     .breadcrumb {
-      padding: 12px 40px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--gray-600);
       font-size: 13px;
-      color: var(--gray-text);
-      border-bottom: 1px solid var(--gray-border);
     }
 
-    .breadcrumb a { color: var(--gray-text); }
-    .breadcrumb a:hover { color: var(--blue); }
-    .breadcrumb span { margin: 0 6px; }
+    .breadcrumb .container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
 
-    /* ── HERO ── */
     .hero {
-      padding: 60px 40px 50px;
-      max-width: 900px;
+      position: relative;
+      color: var(--white);
+      overflow: hidden;
+      background: var(--navy-900);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(10, 30, 51, 0.74), rgba(10, 30, 51, 0.92)),
+        repeating-linear-gradient(90deg, rgba(245, 180, 0, 0.05) 0 2px, transparent 2px 90px),
+        radial-gradient(circle at 20% 20%, rgba(245, 180, 0, 0.15), transparent 38%),
+        radial-gradient(circle at 80% 70%, rgba(245, 180, 0, 0.08), transparent 42%);
+    }
+
+    .hero .container {
+      position: relative;
+      padding-top: 72px;
+      padding-bottom: 84px;
+      max-width: 980px;
     }
 
     .hero-label {
-      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 600;
-      color: var(--blue-accent);
-      letter-spacing: 0.3px;
-      margin-bottom: 14px;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+
+    .hero-label::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--yellow);
     }
 
     .hero h1 {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1.08;
-      color: var(--dark);
-      letter-spacing: -1px;
+      font-size: clamp(42px, 8vw, 76px);
+      line-height: 0.94;
+      margin-bottom: 12px;
+      color: var(--white);
     }
 
-    .hero h1 .muted {
-      color: #9ca3af;
-      font-weight: 700;
-    }
+    .hero .muted { color: rgba(255, 255, 255, 0.72); }
 
     .hero p {
-      margin-top: 18px;
-      font-size: 15px;
-      color: var(--gray-text);
-      max-width: 520px;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 17px;
       line-height: 1.65;
     }
 
-    /* ── FILTER BAR ── */
     .filter-bar {
-      background: var(--gray-bg);
-      border-top: 1px solid var(--gray-border);
-      border-bottom: 1px solid var(--gray-border);
-      padding: 20px 40px;
+      background: var(--white);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 24px 0;
     }
 
     .filter-top {
@@ -190,347 +222,433 @@
     }
 
     .search-input {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: 8px;
-      padding: 9px 16px;
-      width: 320px;
-      color: var(--gray-text);
+      gap: 9px;
+      background: var(--cream);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      color: var(--gray-400);
       font-size: 14px;
-      font-family: var(--font);
     }
 
-    .search-input svg { flex-shrink: 0; opacity: 0.5; }
-
-    .btn-filters {
-      display: flex;
+    .btn-filters,
+    .btn-grid {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: 8px;
-      padding: 9px 18px;
+      padding: 10px 14px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      font-family: var(--font);
+      font-weight: 700;
+      color: var(--navy-800);
+      background: var(--white);
+      transition: all 0.2s ease;
     }
 
-    .btn-grid {
-      margin-left: auto;
-      background: var(--white);
-      border: 1px solid var(--gray-border);
-      border-radius: 8px;
-      padding: 9px 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      color: var(--blue);
+    .btn-filters:hover,
+    .btn-grid:hover {
+      border-color: var(--yellow);
+      color: var(--yellow-dark);
     }
+
+    .btn-grid { margin-left: auto; }
 
     .filter-row {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 30px;
+      flex-wrap: wrap;
     }
 
     .filter-group {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .filter-label {
-      font-size: 11px;
-      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--gray-text);
+      color: var(--gray-600);
+      font-weight: 700;
     }
 
     .chip {
-      padding: 6px 16px;
-      border-radius: 20px;
+      padding: 6px 14px;
+      border-radius: 24px;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--navy-700);
       font-size: 13px;
       font-weight: 500;
-      border: 1px solid var(--gray-border);
-      background: var(--white);
-      cursor: pointer;
-      transition: all .15s;
-      color: var(--text);
+      transition: all 0.2s ease;
     }
 
-    .chip:hover { border-color: var(--blue); color: var(--blue); }
+    .chip:hover {
+      border-color: var(--yellow);
+      color: var(--yellow-dark);
+    }
 
     .chip.active {
-      background: var(--dark);
+      background: var(--navy-800);
+      border-color: var(--navy-800);
       color: var(--white);
-      border-color: var(--dark);
     }
 
-    /* ── COURSES SECTION ── */
     .courses-section {
-      padding: 40px 40px 60px;
+      background: var(--cream);
+      padding: 46px 0 64px;
     }
 
     .courses-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
     .courses-count {
-      font-size: 12px;
-      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--gray-text);
+      letter-spacing: 0.12em;
+      color: var(--gray-600);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .courses-link {
       font-size: 13px;
-      color: var(--blue-accent);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
+      color: var(--navy-700);
+      display: inline-flex;
       gap: 6px;
+      align-items: center;
     }
 
-    .courses-link svg { opacity: 0.7; }
-
-    /* ── GRID ── */
     .courses-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
     }
 
-    /* ── CARD ── */
     .card {
-      border: 1px solid var(--gray-border);
+      background: var(--white);
+      border: 1px solid var(--gray-100);
       border-radius: var(--radius);
       overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--card-shadow);
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      transition: box-shadow .2s, transform .2s;
     }
 
     .card:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+      border-color: var(--yellow);
+      box-shadow: 0 16px 28px -16px rgba(15, 42, 68, 0.35);
       transform: translateY(-2px);
     }
 
     .card-img {
       position: relative;
-      height: 180px;
-      overflow: hidden;
-      background: #dde;
+      height: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.35);
     }
 
-    .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Placeholder colored backgrounds for images */
     .card-img.img-construccion { background: linear-gradient(135deg, #b45309 0%, #78350f 100%); }
-    .card-img.img-industria { background: linear-gradient(135deg, #1e40af 0%, #0f172a 100%); }
+    .card-img.img-industria { background: linear-gradient(135deg, #1d4ed8 0%, #0f172a 100%); }
     .card-img.img-transporte { background: linear-gradient(135deg, #374151 0%, #111827 100%); }
     .card-img.img-seguridad { background: linear-gradient(135deg, #d97706 0%, #92400e 100%); }
-    .card-img.img-tecnologia { background: linear-gradient(135deg, #1d4ed8 0%, #0c1445 100%); }
-
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(255,255,255,0.92);
-      color: var(--dark);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.3px;
-    }
+    .card-img.img-tecnologia { background: linear-gradient(135deg, #1e40af 0%, #0c1445 100%); }
 
     .card-body {
-      padding: 20px 20px 16px;
-      flex: 1;
+      padding: 16px;
       display: flex;
       flex-direction: column;
+      flex: 1;
     }
 
     .card-title {
-      font-size: 18px;
+      color: var(--navy-800);
+      font-size: 31px;
+      line-height: 1;
+      margin-bottom: 6px;
+      text-transform: none;
+      letter-spacing: 0;
+      font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 8px;
     }
 
     .card-desc {
+      color: var(--gray-600);
       font-size: 13px;
-      color: var(--gray-text);
       line-height: 1.55;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      margin-bottom: 12px;
     }
 
     .card-meta {
       display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-top: 14px;
       flex-wrap: wrap;
+      gap: 10px 14px;
+      color: var(--gray-600);
+      font-size: 12px;
+      margin-top: auto;
     }
 
     .meta-item {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 12px;
-      color: var(--gray-text);
-      font-weight: 500;
     }
 
-    .meta-item svg { color: var(--blue-accent); flex-shrink: 0; }
+    .meta-item svg { color: var(--yellow-dark); }
 
-    .card-footer {
-      border-top: 1px solid var(--gray-border);
-      margin-top: 16px;
-    }
+    .card-footer { margin-top: 12px; }
 
     .btn-detail {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 100%;
-      padding: 14px 20px;
-      background: var(--dark);
-      color: var(--white);
+      padding: 12px 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       font-size: 13px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-family: var(--font);
-      letter-spacing: 0.2px;
-      transition: background .15s;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--navy-800);
+      border-radius: 2px;
+      transition: background 0.2s;
     }
 
-    .btn-detail:hover { background: #334a62; }
+    .btn-detail:hover { background: var(--navy-900); }
 
-    /* ── PRÓXIMAS APERTURAS CARD ── */
-    .card-upcoming {
-      border: 1px dashed var(--gray-border);
-      border-radius: var(--radius);
-      background: var(--white);
-      display: flex;
-      flex-direction: column;
+    .course-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 17, 23, 0.62);
+      display: none;
       align-items: center;
       justify-content: center;
+      z-index: 80;
+      padding: 20px;
+    }
+
+    .course-modal.open { display: flex; }
+
+    .course-modal-content {
+      width: min(940px, 100%);
+      max-height: min(92vh, 760px);
+      overflow: auto;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6);
+      padding: 18px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--gray-200);
+      font-size: 22px;
+      line-height: 1;
+      color: var(--gray-600);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      gap: 20px;
+      padding-top: 14px;
+    }
+
+    .modal-title {
+      color: var(--navy-800);
+      font-size: 50px;
+      line-height: 0.95;
+      text-transform: none;
+      margin-bottom: 8px;
+    }
+
+    .modal-teacher {
+      color: var(--gray-600);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-left-note {
+      color: var(--gray-600);
+      font-size: 14px;
+      margin-top: 210px;
+    }
+
+    .modal-details {
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+
+    .modal-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 10px 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-row:last-child { border-bottom: none; }
+
+    .modal-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .modal-value {
+      color: #334155;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .card-upcoming {
+      border: 1.5px dashed var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 40px 28px;
-      gap: 14px;
+      gap: 12px;
     }
 
     .upcoming-icon {
-      width: 56px;
-      height: 56px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-      background: #eff6ff;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: rgba(245, 180, 0, 0.16);
+      color: var(--yellow-dark);
     }
 
-    .upcoming-icon svg { color: var(--blue-accent); }
-
     .upcoming-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--dark);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 30px;
+      color: var(--navy-800);
+      line-height: 1;
     }
 
     .upcoming-desc {
       font-size: 13px;
-      color: var(--gray-text);
-      line-height: 1.55;
+      color: var(--gray-600);
+      max-width: 260px;
     }
 
     .btn-subscribe {
       margin-top: 4px;
-      padding: 10px 22px;
-      border: 1.5px solid var(--blue-accent);
-      border-radius: 8px;
-      color: var(--blue-accent);
+      border: 2px solid var(--navy-800);
+      color: var(--navy-800);
+      border-radius: 2px;
+      padding: 10px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      background: transparent;
-      font-family: var(--font);
-      transition: all .15s;
+      font-weight: 700;
+      transition: all 0.2s;
     }
 
-    .btn-subscribe:hover { background: var(--blue-accent); color: #fff; }
+    .btn-subscribe:hover {
+      background: var(--navy-800);
+      color: var(--white);
+    }
 
-    /* ── CTA BANNER ── */
     .cta-banner {
-      background: var(--dark);
-      border-radius: 14px;
-      margin: 0 40px 60px;
-      padding: 50px 56px;
+      background: var(--navy-800);
+      color: var(--white);
+      border-radius: var(--radius);
+      margin: 0 auto 64px;
+      max-width: 1216px;
+      padding: 44px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
     }
 
     .cta-content h2 {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--white);
+      font-size: 46px;
+      line-height: 0.95;
       margin-bottom: 12px;
+      color: var(--white);
     }
 
     .cta-content p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.65);
-      max-width: 440px;
-      line-height: 1.65;
-      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      max-width: 620px;
+      margin-bottom: 16px;
     }
 
     .cta-badges {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
     .cta-badge {
-      display: flex;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.9);
+      display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.85);
     }
 
     .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      flex-shrink: 0;
     }
 
     .dot-green { background: #22c55e; }
@@ -539,462 +657,467 @@
 
     .btn-cta {
       flex-shrink: 0;
-      background: var(--white);
-      color: var(--dark);
-      border: none;
-      border-radius: 10px;
-      padding: 16px 28px;
-      font-size: 15px;
+      border: 2px solid var(--yellow);
+      background: var(--yellow);
+      color: var(--ink);
+      padding: 14px 24px;
+      border-radius: 2px;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-size: 16px;
       font-weight: 700;
-      cursor: pointer;
-      font-family: var(--font);
-      white-space: nowrap;
-      transition: opacity .15s;
+      transition: all 0.2s;
     }
 
-    .btn-cta:hover { opacity: 0.9; }
+    .btn-cta:hover {
+      background: var(--yellow-bright);
+      border-color: var(--yellow-bright);
+    }
 
-    /* ── FOOTER ── */
-    footer {
+    .site-footer {
+      background: var(--footer-bg);
+      color: var(--white);
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 32px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
       background: var(--white);
-      border-top: 1px solid var(--gray-border);
-      padding: 50px 40px 30px;
+      padding: 12px 18px;
+      border-radius: 4px;
+      flex-shrink: 0;
     }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
-      gap: 40px;
-      margin-bottom: 40px;
+    .footer-logo img {
+      height: 74px;
+      width: auto;
+      display: block;
     }
 
-    .footer-brand p {
-      font-size: 13px;
-      color: var(--gray-text);
-      line-height: 1.65;
-      margin-top: 12px;
-      max-width: 220px;
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.5;
+    }
+
+    .footer-contact-item .icon {
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 2px;
+      flex-shrink: 0;
     }
 
     .footer-socials {
       display: flex;
-      gap: 14px;
-      margin-top: 18px;
+      gap: 20px;
+      align-items: center;
+      padding-left: 40px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      min-height: 60px;
     }
 
-    .social-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      background: var(--gray-bg);
+    .footer-socials a {
+      color: rgba(255, 255, 255, 0.75);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gray-text);
-      font-size: 13px;
-      transition: background .15s;
-    }
-
-    .social-icon:hover { background: var(--blue-accent); color: #fff; }
-
-    .footer-col h4 {
-      font-size: 12px;
+      transition: color 0.2s, transform 0.2s;
+      font-size: 20px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text);
-      margin-bottom: 16px;
     }
 
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .footer-socials a:hover {
+      color: var(--yellow);
+      transform: translateY(-2px);
     }
 
-    .footer-col ul li a {
-      font-size: 13px;
-      color: var(--gray-text);
-      transition: color .15s;
+    @media (max-width: 1080px) {
+      .courses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cta-banner { margin-left: 32px; margin-right: 32px; }
+      .cta-content h2 { font-size: 38px; }
     }
 
-    .footer-col ul li a:hover { color: var(--blue); }
+    @media (max-width: 820px) {
+      .container { padding: 0 18px; }
+      .nav-main { display: none; }
+      .hero .container { padding-top: 54px; padding-bottom: 64px; }
+      .hero p { font-size: 15px; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .filter-top { flex-wrap: wrap; }
+      .search-input { min-width: 100%; }
+      .btn-grid { margin-left: 0; }
+      .cta-banner {
+        margin-left: 18px;
+        margin-right: 18px;
+        padding: 30px 22px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-cta { width: 100%; text-align: center; justify-content: center; }
+      .footer-main { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .footer-socials {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 20px;
+        width: 100%;
+      }
 
-    .footer-contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--gray-text);
-      margin-bottom: 10px;
-    }
-
-    .footer-contact-item svg { flex-shrink: 0; margin-top: 2px; color: var(--blue-accent); }
-
-    .footer-bottom {
-      border-top: 1px solid var(--gray-border);
-      padding-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--gray-text);
-    }
-
-    /* ── SVG ICON HELPERS ── */
-    .icon { display: inline-flex; align-items: center; justify-content: center; }
-
-    /* ── PHOTO PLACEHOLDERS ── */
-    .img-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .img-placeholder svg {
-      opacity: 0.25;
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-left-note { margin-top: 0; }
     }
   </style>
 </head>
 <body>
-
-<!-- NAVBAR -->
-<nav>
-  <div class="nav-brand">
-    <img src="" alt="Logo" style="height: 42px; width: auto;">
-    <div class="brand-name">Escuela Técnica</div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#" class="active">Cursos</a></li>
-    <li><a href="#">Maestro de Obra</a></li>
-    <li><a href="#">Contacto</a></li>
-  </ul>
-</nav>
-
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="#">Inicio</a>
-  <span>›</span>
-  Cursos
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-label">Oferta Académica 2026</div>
-  <h1>Programas técnicos:<br><span class="muted">oferta académica</span></h1>
-  <p>Explora nuestra selección de programas diseñados para responder a las demandas del mercado laboral guatemalteco. Desde construcción hasta tecnología de vanguardia, impulsamos tu carrera profesional con el respaldo de la Universidad de San Carlos de Guatemala.</p>
-</section>
-
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <div class="filter-top">
-    <div class="search-input">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Buscar por nombre, palabra clave o área...
-    </div>
-    <button class="btn-filters">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-      MÁS FILTROS
-    </button>
-    <button class="btn-grid">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-    </button>
-  </div>
-  <div class="filter-row">
-    <div class="filter-group">
-      <span class="filter-label">Modalidad</span>
-      <button class="chip active">Todas</button>
-      <button class="chip">Presencial</button>
-      <button class="chip">Virtual</button>
-      <button class="chip">Híbrida</button>
-    </div>
-    <div class="filter-group">
-      <span class="filter-label">Área de Estudio</span>
-      <button class="chip">Construcción</button>
-      <button class="chip">Industria</button>
-      <button class="chip">Tecnología</button>
-    </div>
-  </div>
-</div>
-
-<!-- COURSES -->
-<section class="courses-section">
-  <div class="courses-header">
-    <span class="courses-count">Mostrando 5 resultados disponibles</span>
-    <a href="#" class="courses-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      ¿No encuentras lo que buscas? Contáctanos
+  <div class="social-strip">
+    <a href="#" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.4 1.4-1.4h1.4V5.8c-.2 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2h-2.3V14h2.3v7h2.5z"/></svg>
+    </a>
+    <a href="#" aria-label="Twitter">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.2 1.6-2.1-.7.4-1.6.8-2.4.9a3.8 3.8 0 0 0-6.5 3.5 10.8 10.8 0 0 1-7.8-4 3.8 3.8 0 0 0 1.2 5.1c-.6 0-1.2-.2-1.7-.5 0 1.8 1.2 3.4 3 3.7-.3.1-.7.2-1.1.2-.3 0-.5 0-.8-.1.5 1.6 2 2.7 3.7 2.8A7.6 7.6 0 0 1 3 18.1a10.8 10.8 0 0 0 5.9 1.7c7.1 0 11-5.8 11-10.9v-.5c.8-.5 1.4-1.1 2-1.8z"/></svg>
+    </a>
+    <a href="#" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C4.8 19.2 12 19.2 12 19.2s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+    </a>
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zm4.8-3.1a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/></svg>
     </a>
   </div>
 
-  <div class="courses-grid">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo-lockup" href="#" aria-label="Escuela Tecnica FIUSAC">
+        <img src="img/FIUSAC.png" alt="Facultad de Ingenieria - Universidad de San Carlos de Guatemala" />
+      </a>
 
-    <!-- Card 1: Maestro de Obra -->
-    <div class="card">
-      <div class="card-img img-construccion">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M2 20h20M6 20V10m12 10V10M2 10l10-7 10 7"/></svg>
-        </div>
-        <span class="card-badge">Construcción</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Maestro de Obra</div>
-        <div class="card-desc">Capacitación avanzada en supervisión de construcción, lectura de planos y gestión de proyectos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            10 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Presencial
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            40 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
+      <nav class="nav-main">
+        <a href="#">Inicio</a>
+        <a href="#" class="active">Cursos</a>
+        <a href="Maestros-de-obra.html">Maestro de Obra</a>
+        <a href="#">Contacto</a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Card 2: Electricista Industrial -->
-    <div class="card">
-      <div class="card-img img-industria">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <span class="card-badge">Industria</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Electricista Industrial</div>
-        <div class="card-desc">Especialización en sistemas eléctricos de potencia, automatización industrial y mantenimiento de equipos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            12 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Híbrida
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            45 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 3: Mecánica Automotriz -->
-    <div class="card">
-      <div class="card-img img-transporte">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9h-2"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><polyline points="13 15 13 5"/></svg>
-        </div>
-        <span class="card-badge">Transporte</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Mecánica Automotriz</div>
-        <div class="card-desc">Diagnóstico y reparación de sistemas de inyección, motores diésel y gasolina, y nuevas tecnologías en vehículos.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            18 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Presencial
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            60 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 4: Seguridad Industrial -->
-    <div class="card">
-      <div class="card-img img-seguridad">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <span class="card-badge">Salud &amp; Seguridad</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Seguridad Industrial</div>
-        <div class="card-desc">Gestión de riesgos laborales, protocolos de prevención de accidentes y normativas de salud ocupacional.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            6 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Virtual
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            25 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Card 5: Técnico en Redes -->
-    <div class="card">
-      <div class="card-img img-tecnologia">
-        <div class="img-placeholder">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        </div>
-        <span class="card-badge">Tecnología</span>
-      </div>
-      <div class="card-body">
-        <div class="card-title">Técnico en Redes</div>
-        <div class="card-desc">Configuración de infraestructuras críticas, seguridad informática, administración de servidores y sistemas en la nube.</div>
-        <div class="card-meta">
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            8 Meses
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Virtual
-          </div>
-          <div class="meta-item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            30 Créditos
-          </div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <button class="btn-detail">
-          Ver detalles del curso
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Próximas Aperturas -->
-    <div class="card-upcoming">
-      <div class="upcoming-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-      </div>
-      <div class="upcoming-title">Próximas Aperturas</div>
-      <div class="upcoming-desc">Estamos constantemente actualizando nuestra oferta académica con nuevos diplomados y certificaciones técnicas.</div>
-      <button class="btn-subscribe">Suscribirse a novedades</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <div class="cta-content">
-    <h2>Certificación con Respaldo Universitario</h2>
-    <p>Todos nuestros cursos técnicos cuentan con el aval oficial de la Universidad de San Carlos de Guatemala, garantizando la calidad y validez de tus estudios en todo el territorio nacional.</p>
-    <div class="cta-badges">
-      <div class="cta-badge"><span class="dot dot-green"></span> Validez Oficial</div>
-      <div class="cta-badge"><span class="dot dot-yellow"></span> Instructores Expertos</div>
-      <div class="cta-badge"><span class="dot dot-blue"></span> Bolsa de Trabajo</div>
+  <div class="breadcrumb">
+    <div class="container">
+      <a href="#">Inicio</a>
+      <span>></span>
+      <span>Cursos</span>
     </div>
   </div>
-  <button class="btn-cta">Solicitar Asesoría</button>
-</div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label">Oferta academica 2026</div>
+      <h1>Programas tecnicos<br /><span class="muted">oferta academica</span></h1>
+      <p>
+        Explora nuestra seleccion de programas disenados para responder a las demandas del mercado
+        laboral guatemalteco. Desde construccion hasta tecnologia de vanguardia, impulsamos tu
+        carrera profesional con el respaldo de la Universidad de San Carlos de Guatemala.
+      </p>
+    </div>
+  </section>
 
-    <div class="footer-brand">
-      <strong style="font-size:15px; font-weight:700;">USAC Formación Técnica</strong>
-      <p>Formación técnica de calidad impulsada por la Universidad San Carlos de Guatemala para el progreso de nuestra nación.</p>
-      <div class="footer-socials">
-        <a href="#" class="social-icon">f</a>
-        <a href="#" class="social-icon">𝕏</a>
-        <a href="#" class="social-icon">in</a>
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-top">
+        <div class="search-input">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Buscar por nombre, palabra clave o codigo...
+        </div>
+        <button class="btn-filters">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Mas filtros
+        </button>
+        <button class="btn-grid" aria-label="Vista de cuadricula">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-group">
+          <span class="filter-label">Modalidad</span>
+          <button class="chip active">Todas</button>
+          <button class="chip">Presencial</button>
+          <button class="chip">Virtual</button>
+          <button class="chip">Hibrida</button>
+        </div>
       </div>
     </div>
-
-    <div class="footer-col">
-      <h4>Académico</h4>
-      <ul>
-        <li><a href="#">Listado de Cursos</a></li>
-        <li><a href="#">Maestro de Obra</a></li>
-        <li><a href="#">Admisiones 2026</a></li>
-        <li><a href="#">Calendario</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Institucional</h4>
-      <ul>
-        <li><a href="#">Sobre Nosotros</a></li>
-        <li><a href="#">Sedes</a></li>
-        <li><a href="#">Noticias</a></li>
-        <li><a href="#">Transparencia</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Contacto</h4>
-      <div class="footer-contact-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Ciudad Universitaria, Zona 12, Guatemala City
-      </div>
-      <div class="footer-contact-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
-        +502 2418-8000
-      </div>
-      <div class="footer-contact-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@usac.edu.gt
-      </div>
-    </div>
-
   </div>
-  <div class="footer-bottom">
-    © 2026 USAC Formación Técnica. Todos los derechos reservados.
-  </div>
-</footer>
 
-<script>
-  // Chip toggle interactivity
-  document.querySelectorAll('.filter-group').forEach(group => {
-    group.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
+  <section class="courses-section">
+    <div class="container">
+      <div class="courses-header">
+        <span class="courses-count">Mostrando 5 resultados disponibles</span>
+        <a href="#" class="courses-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          No encuentras lo que buscas? Contactanos
+        </a>
+      </div>
+
+      <div class="courses-grid">
+        <div class="card">
+          <div class="card-img img-construccion">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20M6 20V10m12 10V10M2 10l10-7 10 7"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-title">197 - Propiedad Intelectual</div>
+            <div class="card-desc">Docente: Licda. Ligia Eunice Vasquez Dardon.</div>
+            <div class="card-meta">
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12:00 - 14:00</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ma Mi</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>USAC 2 / CLAR 2</div>
+            </div>
+            <div class="card-footer">
+              <button class="btn-detail" data-no="1" data-codigo="197" data-nombre="Propiedad Intelectual" data-catedratico="Licda. Ligia Eunice Vasquez Dardon" data-horario="12:00 - 14:00" data-dias="Ma Mi" data-inicio="Lunes 19 de enero" data-creditos-usac="2" data-creditos-clar="2" data-enlace="Sin enlace">
+                Ver detalles del curso
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img img-industria">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-title">184 - Acondicionamiento del Agua para la Industria</div>
+            <div class="card-desc">Docente: Otto Ivan Augusto Orozco y Orozco.</div>
+            <div class="card-meta">
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>08:00 - 13:00</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Sa</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>USAC 5 / CLAR 2</div>
+            </div>
+            <div class="card-footer">
+              <button class="btn-detail" data-no="2" data-codigo="184" data-nombre="Acondicionamiento del Agua para la Industria" data-catedratico="Otto Ivan Augusto Orozco y Orozco" data-horario="08:00 - 13:00" data-dias="Sa" data-inicio="Sabado 24 de enero" data-creditos-usac="2" data-creditos-clar="2" data-enlace="Sin enlace">
+                Ver detalles del curso
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img img-transporte">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9h-2"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><polyline points="13 15 13 5"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-title">185 - Buenas Practicas de Manufactura en la Industria</div>
+            <div class="card-desc">Docente: Ana Paola Mendez de Leon.</div>
+            <div class="card-meta">
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14:00 - 19:00</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Sa</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>USAC 2 / CLAR 2</div>
+            </div>
+            <div class="card-footer">
+              <button class="btn-detail" data-no="3" data-codigo="185" data-nombre="Buenas Practicas de Manufactura en la Industria" data-catedratico="Ana Paola Mendez de Leon" data-horario="14:00 - 19:00" data-dias="Sa" data-inicio="Sabado 24 de enero" data-creditos-usac="2" data-creditos-clar="2" data-enlace="Sin enlace">
+                Ver detalles del curso
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img img-seguridad">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-title">186 - Administracion de la Calidad en la Industria</div>
+            <div class="card-desc">Docente: Ana Paola Mendez de Leon.</div>
+            <div class="card-meta">
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18:30 - 21:00</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ma Ju</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>USAC 5 / CLAR 2</div>
+            </div>
+            <div class="card-footer">
+              <button class="btn-detail" data-no="4" data-codigo="186" data-nombre="Administracion de la Calidad en la Industria" data-catedratico="Ana Paola Mendez de Leon" data-horario="18:30 - 21:00" data-dias="Ma Ju" data-inicio="Martes 20 de enero" data-creditos-usac="2" data-creditos-clar="2" data-enlace="Sin enlace">
+                Ver detalles del curso
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img img-tecnologia">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <div class="card-body">
+            <div class="card-title">187 - Gestion Gerencial de Operaciones</div>
+            <div class="card-desc">Docente: Andres Manuel Remis Salguero.</div>
+            <div class="card-meta">
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>18:00 - 20:30</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ma Ju</div>
+              <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>USAC 2 / CLAR 2</div>
+            </div>
+            <div class="card-footer">
+              <button class="btn-detail" data-no="5" data-codigo="187" data-nombre="Gestion Gerencial de Operaciones" data-catedratico="Andres Manuel Remis Salguero" data-horario="18:00 - 20:30" data-dias="Ma Ju" data-inicio="Martes 20 de enero" data-creditos-usac="2" data-creditos-clar="2" data-enlace="Sin enlace">
+                Ver detalles del curso
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-upcoming">
+          <div class="upcoming-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div class="upcoming-title">Proximas Aperturas</div>
+          <div class="upcoming-desc">Actualizamos nuestra oferta academica con nuevos diplomados y certificaciones tecnicas.</div>
+          <button class="btn-subscribe">Suscribirse a novedades</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div class="cta-content">
+      <h2>Certificacion con respaldo universitario</h2>
+      <p>
+        Todos nuestros cursos tecnicos cuentan con el aval oficial de la Universidad de San Carlos
+        de Guatemala, garantizando la calidad y validez de tus estudios en todo el territorio nacional.
+      </p>
+      <div class="cta-badges">
+        <div class="cta-badge"><span class="dot dot-green"></span>Validez oficial</div>
+        <div class="cta-badge"><span class="dot dot-yellow"></span>Instructores expertos</div>
+        <div class="cta-badge"><span class="dot dot-blue"></span>Bolsa de trabajo</div>
+      </div>
+    </div>
+    <button class="btn-cta">Solicitar asesoria</button>
+  </div>
+
+  <footer class="site-footer" id="contacto">
+    <div class="container footer-main">
+      <div class="footer-logo">
+        <img src="img/FIUSAC.png" alt="Facultad de Ingenieria - Universidad de San Carlos de Guatemala" />
+      </div>
+
+      <div class="footer-contact">
+        <div class="footer-contact-item">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Universidad de San Carlos de Guatemala, zona 12, Facultad de Ingeniería
+        </div>
+        <div class="footer-contact-item">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          1234-5678
+        </div>
+        <div class="footer-contact-item">
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg>
+          <a href="mailto:escueltatecnica@ingenieria.usac.edu.gt" style="color:inherit;">escueltatecnica@ingenieria.usac.edu.gt</a>
+        </div>
+      </div>
+
+      <div class="footer-socials" aria-label="Redes sociales">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.4 1.4-1.4h1.4V5.8c-.2 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2h-2.3V14h2.3v7h2.5z"/></svg>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.2 1.6-2.1-.7.4-1.6.8-2.4.9a3.8 3.8 0 0 0-6.5 3.5 10.8 10.8 0 0 1-7.8-4 3.8 3.8 0 0 0 1.2 5.1c-.6 0-1.2-.2-1.7-.5 0 1.8 1.2 3.4 3 3.7-.3.1-.7.2-1.1.2-.3 0-.5 0-.8-.1.5 1.6 2 2.7 3.7 2.8A7.6 7.6 0 0 1 3 18.1a10.8 10.8 0 0 0 5.9 1.7c7.1 0 11-5.8 11-10.9v-.5c.8-.5 1.4-1.1 2-1.8z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 12s0-3.4-.4-5c-.2-.9-.9-1.6-1.8-1.8C19.2 5 12 5 12 5s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 8.6 1 12 1 12s0 3.4.4 5c.2.9.9 1.6 1.8 1.8C4.8 19.2 12 19.2 12 19.2s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-5 .4-5zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zm4.8-3.1a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="course-modal" id="course-modal" aria-hidden="true">
+    <div class="course-modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+      <div class="modal-grid">
+        <div>
+          <h3 class="modal-title" id="modal-title"></h3>
+          <div class="modal-teacher" id="modal-teacher"></div>
+          <p class="modal-left-note">Este curso no tiene enlace de clase publicado.</p>
+        </div>
+        <div class="modal-details" id="modal-details"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.filter-group').forEach(function (group) {
+      group.querySelectorAll('.chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          group.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+        });
       });
     });
-  });
-</script>
 
+    var modal = document.getElementById('course-modal');
+    var modalTitle = document.getElementById('modal-title');
+    var modalTeacher = document.getElementById('modal-teacher');
+    var modalDetails = document.getElementById('modal-details');
+    var modalClose = document.getElementById('modal-close');
+
+    function detailRow(label, value) {
+      return '<div class="modal-row"><span class="modal-label">' + label + '</span><span class="modal-value">' + value + '</span></div>';
+    }
+
+    document.querySelectorAll('.btn-detail').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var d = btn.dataset;
+        modalTitle.textContent = d.codigo + ' - ' + d.nombre;
+        modalTeacher.textContent = 'Docente: ' + d.catedratico;
+        modalDetails.innerHTML =
+          detailRow('No.', d.no) +
+          detailRow('Codigo', d.codigo) +
+          detailRow('Nombre', d.nombre) +
+          detailRow('Catedratico', d.catedratico) +
+          detailRow('Horario', d.horario) +
+          detailRow('Dias', d.dias) +
+          detailRow('Inicio de clases', d.inicio) +
+          detailRow('Creditos USAC', d.creditosUsac) +
+          detailRow('Creditos CLAR', d.creditosClar) +
+          detailRow('Enlace de clase', d.enlace);
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
