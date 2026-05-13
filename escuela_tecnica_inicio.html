@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escuela Técnica – FIUSAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-mid: #243259;
+    --accent: #f0a500;
+    --accent-light: #ffc93c;
+    --text: #1a2744;
+    --muted: #6b7a99;
+    --light-bg: #f4f6fb;
+    --white: #ffffff;
+    --radius: 12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(26,39,68,.08);
+    box-shadow: 0 2px 20px rgba(26,39,68,.06);
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--text);
+  }
+
+  .nav-logo {
+    width: 52px; height: 52px;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .nav-logo img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; margin-left: 2px; }
+  .nav-brand-text span:first-child { font-family: 'Sora', sans-serif; font-size: 10px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  .nav-brand-text span:last-child { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--navy); }
+  .nav-links a.active { color: var(--navy); font-weight: 600; }
+
+  .nav-cta {
+    background: var(--navy); color: white;
+    padding: 10px 22px; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none; letter-spacing: .02em;
+    transition: background .2s, transform .15s;
+  }
+  .nav-cta:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 68px;
+    min-height: calc(100vh - 68px);
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative; overflow: hidden;
+    background: var(--white);
+  }
+
+  .hero-content {
+    padding: 80px 5% 80px 8%;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff3d0; color: #c17a00;
+    border: 1px solid #fcd26a;
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: .04em; text-transform: uppercase;
+    margin-bottom: 28px; width: fit-content;
+  }
+  .hero-badge::before { content: '●'; font-size: 8px; color: var(--accent); animation: pulse 2s infinite; }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+  .hero h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 800; line-height: 1.08;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--muted); font-weight: 700; }
+
+  .hero p {
+    font-size: 16px; line-height: 1.7; color: var(--muted);
+    max-width: 440px; margin-bottom: 40px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 28px; margin-bottom: 44px; flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+  }
+  .hero-stat svg { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 2; }
+
+  .hero-stat strong { color: var(--navy); }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--navy); color: white;
+    padding: 14px 28px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; letter-spacing: .02em;
+    transition: all .2s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,39,68,.25); }
+
+  .btn-secondary {
+    background: transparent; color: var(--navy);
+    padding: 14px 28px; border-radius: 10px; border: 1.5px solid #d0d8ec;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; letter-spacing: .02em;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--navy); background: var(--light-bg); }
+
+  .hero-image {
+    position: relative; overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-image::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to right, white 0%, transparent 25%);
+  }
+
+  /* ── ACADEMIA ── */
+  .section-academia {
+    padding: 80px 8%;
+    background: var(--light-bg);
+  }
+
+  .academia-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+
+  .academia-text h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700; color: var(--navy); margin-bottom: 14px;
+  }
+  .academia-text p { font-size: 15px; line-height: 1.75; color: var(--muted); margin-bottom: 28px; }
+
+  .academia-icons {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .icon-card {
+    background: white; border-radius: var(--radius);
+    padding: 20px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 12px rgba(26,39,68,.07);
+    transition: transform .2s, box-shadow .2s;
+    aspect-ratio: 1;
+  }
+  .icon-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,39,68,.13); }
+  .icon-card svg { width: 32px; height: 32px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy);
+    padding: 48px 8%;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    text-align: center; gap: 20px;
+  }
+
+  .stat-item {}
+  .stat-item .num {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800; color: white; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-item .num span { color: var(--accent-light); }
+  .stat-item .label {
+    font-size: 11px; font-weight: 500; color: rgba(255,255,255,.55);
+    letter-spacing: .1em; text-transform: uppercase;
+  }
+
+  /* ── FEATURED PROGRAM ── */
+  .section-featured {
+    padding: 100px 8%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .featured-image {
+    position: relative; border-radius: 16px; overflow: hidden;
+  }
+  .featured-image img {
+    width: 100%; height: 420px; object-fit: cover; display: block;
+  }
+
+  .featured-badge-over {
+    position: absolute; bottom: 20px; right: 20px;
+    background: var(--navy); color: white;
+    border-radius: 12px; padding: 16px 20px;
+    text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  }
+  .featured-badge-over .pct {
+    font-family: 'Sora', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent-light);
+    display: block; line-height: 1;
+  }
+  .featured-badge-over .pct-label { font-size: 11px; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .06em; }
+
+  .featured-content {}
+  .featured-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .featured-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+
+  .featured-content h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 800; line-height: 1.15;
+    color: var(--navy); margin-bottom: 18px;
+  }
+  .featured-content p { font-size: 15px; line-height: 1.75; color: var(--muted); margin-bottom: 28px; }
+
+  .features-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px 20px; margin-bottom: 36px;
+  }
+  .features-list li {
+    list-style: none; font-size: 14px; color: var(--text);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .features-list li::before {
+    content: '';
+    width: 18px; height: 18px; min-width: 18px;
+    background: #e8f5e9; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2322a050' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='4 10 8 14 16 6'/%3E%3C/svg%3E");
+    background-size: 12px; background-repeat: no-repeat; background-position: center;
+  }
+
+  /* ── TESTIMONIOS ── */
+  .section-testimonios {
+    padding: 100px 8%;
+    background: var(--light-bg);
+    text-align: center;
+  }
+
+  .section-testimonios h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700; color: var(--navy); margin-bottom: 12px;
+  }
+  .section-testimonios > p { font-size: 15px; color: var(--muted); max-width: 480px; margin: 0 auto 52px; line-height: 1.7; }
+
+  .testimonios-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; text-align: left;
+  }
+
+  .testimonio-card {
+    background: white; border-radius: 14px;
+    padding: 28px; box-shadow: 0 2px 16px rgba(26,39,68,.08);
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+  }
+  .testimonio-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,39,68,.14); }
+  .testimonio-card::before {
+    content: '\201C';
+    position: absolute; top: 16px; right: 20px;
+    font-size: 72px; line-height: 1; color: var(--light-bg);
+    font-family: Georgia, serif; font-weight: 700;
+  }
+
+  .testimonio-text { font-size: 14px; line-height: 1.75; color: #4a556e; margin-bottom: 24px; }
+
+  .testimonio-author { display: flex; align-items: center; gap: 12px; }
+  .testimonio-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: white;
+  }
+  .testimonio-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .testimonio-role { font-size: 12px; color: var(--muted); }
+
+  /* ── CTA ── */
+  .section-cta {
+    padding: 100px 8%; text-align: center;
+    background: white;
+  }
+
+  .section-cta h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800; color: var(--navy); margin-bottom: 14px;
+  }
+  .section-cta p { font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 60px 8% 32px;
+    color: rgba(255,255,255,.65);
+  }
+
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 48px;
+  }
+
+  .footer-brand p { font-size: 13px; line-height: 1.7; margin: 14px 0 20px; max-width: 240px; }
+
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 32px; height: 32px; border-radius: 6px;
+    background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: background .2s;
+    font-size: 13px; color: white;
+  }
+  .footer-social a:hover { background: rgba(255,255,255,.2); }
+
+  .footer-col h4 {
+    font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,.4); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { text-decoration: none; font-size: 13px; color: rgba(255,255,255,.65); transition: color .2s; }
+  .footer-col a:hover { color: white; }
+
+  .footer-contact li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
+  .footer-contact li span { min-width: 14px; }
+
+  .footer-bottom {
+    padding-top: 28px; border-top: 1px solid rgba(255,255,255,.1);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-image { height: 320px; }
+    .hero-image::before { background: linear-gradient(to bottom, white 0%, transparent 30%); }
+    .academia-inner, .section-featured { grid-template-columns: 1fr; gap: 40px; }
+    .stats-bar { grid-template-columns: 1fr; padding: 40px 8%; gap: 30px; }
+    .testimonios-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-logo">
+      <img src="fiusac_negro.png" alt="FIUSAC">
+    </div>
+    <div class="nav-brand-text">
+      
+      <span>Escuela Técnica</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#" class="active">Inicio</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#maestro">Maestro de Obra</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+
+  <a href="#inscribir" class="nav-cta">Inscríbete</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content fade-up">
+    <div class="hero-badge">Inscripciones Abiertas</div>
+    <h1>Formación técnica para el <em>desarrollo</em> del país</h1>
+    <p>Impulsamos el talento guatemalteco con programas académicos de alta calidad, diseñados para las demandas del mercado laboral actual.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <strong>+15,000</strong>&nbsp;Egresados
+      </div>
+      <div class="hero-stat">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <strong>Aval</strong>&nbsp;Institucional USAC
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#cursos" class="btn-primary">Ver oferta académica →</a>
+      <a href="#maestro" class="btn-secondary">Maestro de Obra</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&q=80" alt="Estudiante técnico trabajando">
+  </div>
+</section>
+
+<!-- ACADEMIA -->
+<section class="section-academia" id="cursos">
+  <div class="academia-inner fade-up">
+    <div class="academia-text">
+      <h2>Explora nuestra oferta académica</h2>
+      <p>Desde mecánica industrial hasta gestión de proyectos, encuentra el programa técnico con el respaldo de la universidad más prestigiosa de Guatemala.</p>
+      <a href="#" class="btn-primary">Ir al listado de cursos →</a>
+    </div>
+    <div class="academia-icons">
+      <!-- Row 1 -->
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <!-- Row 2 -->
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="icon-card">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stat-item fade-up">
+    <div class="num">1951</div>
+    <div class="label">Año de fundición</div>
+  </div>
+  <div class="stat-item fade-up">
+    <div class="num"><span>+</span>45</div>
+    <div class="label">Organizando Escuela de Vacaciones</div>
+  </div>
+  <div class="stat-item fade-up">
+    <div class="num">1978</div>
+    <div class="label">Innovación Audiovisual (CIAVI)</div>
+  </div>
+</section>
+
+<!-- FEATURED PROGRAM -->
+<section class="section-featured" id="maestro">
+  <div class="featured-image fade-up">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Maestro de Obra en construcción">
+    <div class="featured-badge-over">
+      <span class="pct">98%</span>
+      <span class="pct-label">Inserción Laboral</span>
+    </div>
+  </div>
+  <div class="featured-content fade-up">
+    <div class="featured-tag">Programa Destacado</div>
+    <h2>Programa Maestro de Obra: Construyendo el Futuro</h2>
+    <p>Un programa integral diseñado para formar líderes en la industria de la construcción. Aprende gestión de proyectos, lectura de planos, seguridad industrial y normativas técnicas nacionales.</p>
+    <ul class="features-list">
+      <li>Certificación Profesional</li>
+      <li>Prácticas en Obra</li>
+      <li>Módulos de Gestión</li>
+      <li>Ética Profesional</li>
+    </ul>
+    <a href="#" class="btn-primary">Más sobre Maestro de Obra →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section-testimonios">
+  <h2>Nuestros alumnos nos respaldan</h2>
+  <p>Historias reales de personas que transformaron su futuro a través de nuestra educación técnica de excelencia.</p>
+  <div class="testimonios-grid">
+    <div class="testimonio-card fade-up">
+      <p class="testimonio-text">"La formación técnica de la USAC no solo me brindó conocimientos, sino la confianza para emprender mi propio taller de servicios industriales."</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">CM</div>
+        <div>
+          <div class="testimonio-name">Carlos Méndez</div>
+          <div class="testimonio-role">Egresado de Electricidad Industrial</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card fade-up">
+      <p class="testimonio-text">"Gracias a los programas técnicos pude ascender a supervisora en menos de un año. La metodología práctica es insuperable."</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">ER</div>
+        <div>
+          <div class="testimonio-name">Elena Ramírez</div>
+          <div class="testimonio-role">Egresada de Gestión de Proyectos</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonio-card fade-up">
+      <p class="testimonio-text">"Certificarme como Maestro de Obra me abrió puertas en las constructoras más grandes del país. Es una inversión que vale cada centavo."</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">RC</div>
+        <div>
+          <div class="testimonio-name">Roberto Castillo</div>
+          <div class="testimonio-role">Maestro de Obra Certificado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta" id="inscribir">
+  <h2>¿Listo para dar el siguiente paso?</h2>
+  <p>Únete a la comunidad técnica más grande del país y prepárate para un futuro lleno de oportunidades profesionales.</p>
+  <a href="#" class="btn-primary">Inscríbete ahora →</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand-text" style="margin-bottom:4px">
+        <span style="color:rgba(255,255,255,.5);font-family:'Sora',sans-serif;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">FIUSAC</span>
+        <span style="color:white;font-family:'Sora',sans-serif;font-size:15px;font-weight:700">USAC Formación Técnica</span>
+      </div>
+      <p>Formación técnica de calidad impulsada por la Universidad San Carlos de Guatemala para el progreso de nuestra nación.</p>
+      <div class="footer-social">
+        <a href="#">f</a>
+        <a href="#">in</a>
+        <a href="#">tw</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Académico</h4>
+      <ul>
+        <li><a href="#">Listado de Cursos</a></li>
+        <li><a href="#">Maestro de Obra</a></li>
+        <li><a href="#">Calendario</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">Sedes</a></li>
+        <li><a href="#">Noticias</a></li>
+        <li><a href="#">Transparencia</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Contacto</h4>
+      <ul>
+        <li><span>📍</span> Ciudad Universitaria, Zona 12, Guatemala City</li>
+        <li><span>📞</span> +502 2418-8000</li>
+        <li><span>✉</span> info@usac.edu.gt</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 USAC Escuela Técnica. Todos los derechos reservados.</span>
+    <span>Ciudad Universitaria, Guatemala</span>
+  </div>
+</footer>
+
+<script>
+  // Intersection observer para animaciones
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
